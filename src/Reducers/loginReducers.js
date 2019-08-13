@@ -3,7 +3,7 @@ export default (state = [], action) => {
     case "LOGIN_SUCESS":
       return {
         ...state,
-        login_sucess: action.loginAction.data,
+        login_sucess: action.loginAction,
         error: null
       };
     case "LOGIN_Failed":

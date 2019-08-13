@@ -12,11 +12,10 @@
     border: none;
     border-radius: 1.5rem;
     padding: 2%;
-    width: 60%;
+    width: 45%;
     background: #f8f9fa;
     font-weight: bold;
     color: #383d41;
-    margin-top: 30%;
     margin-bottom: 3%;
     cursor: pointer;
 }
@@ -58,7 +57,7 @@
     background: #0062cc;
     color: #fff;
     font-weight: 600;
-    width: 50%;
+    width: 35%;
     cursor: pointer;
 }
 .register .nav-tabs{
@@ -92,4 +91,7 @@
     margin-top: 8%;
     margin-bottom: -15%;
     color: #495057;
+}
+.login_tab{
+    margin: 0 auto;
 }

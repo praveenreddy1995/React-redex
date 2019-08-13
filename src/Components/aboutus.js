@@ -6,6 +6,7 @@ class AboutComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.submit=this.submit.bind(this);
   }
   componentDidMount() {
     this.props.LoginAction.login();
@@ -13,11 +14,15 @@ class AboutComponent extends React.Component {
   componentWillReceiveProps(props) {
     console.log("after recving props>>>>>>", JSON.stringify(props.loginCredentials));
   }
+  submit(values) {
+    alert("submitted");
+    console.log(values);
+  }
   render() {
     return (
-      <div>
-        <h1>About Us page</h1>
-      </div>
+      <div className="container">
+     <h1>About us page.................</h1>
+    </div>
     );
   }
 }

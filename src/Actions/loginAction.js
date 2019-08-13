@@ -3,12 +3,12 @@ export default (form, callback) => {
   return dispatch => {
     axios({
       method: "get",
-      url: "http://localhost:9012/api_rest/read.php",
+      url: "http://localhost:9012/react-redux-rest-API/read.php",
       headers: {
         "Content-Type": "application/json"
       }
     })
-    .then(response=>{
+    .then(response=>{ 
         var data=response;
         console.log("actionresponse Sucess>>>>",data);
         dispatch({

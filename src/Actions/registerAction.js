@@ -4,7 +4,7 @@ export default (form) => {
   return dispatch => {
     axios({
       method: "post",
-      url: "http://localhost:9012/api_rest/register.php",
+      url: "http://localhost:9012/react-redux-rest-API/register.php",
       //url: "http://192.168.5.143:9012/angular-php-app/backend/api/create.php",
       data:form,
       headers: {
