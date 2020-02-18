@@ -1,6 +1,6 @@
 import login from './loginAction';
-import register from './registerAction'
+import search from './searchAction'
 export default{
     login,
-    register
+    search
 }   

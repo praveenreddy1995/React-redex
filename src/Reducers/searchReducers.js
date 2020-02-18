@@ -1,15 +1,15 @@
 export default (state = [], action) => {
     switch (action.type) {
-      case "REGISTER_SUCESS":
+      case "SEARCH_SUCESS":
         return {
           ...state,
-          register_sucess: action.registerAction.data,
+          search_sucess: action.searchAction,
           error: null
         };
-      case "REGISTER_Failed":
+      case "SEARCH_Failed":
         return {
           ...state,
-          register_failed: action.registerAction,
+          search_failed: action.searchAction,
           error: null
         };
         default:

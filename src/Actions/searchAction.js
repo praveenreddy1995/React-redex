@@ -3,7 +3,7 @@ export default (form, callback) => {
   return dispatch => {
     axios({
       method: "get",
-      url: "https://swapi.co/api/people/1/",
+      url: "https://swapi.co/api/planets",
       headers: {
         "Content-Type": "application/json"
       }
@@ -12,16 +12,16 @@ export default (form, callback) => {
         var data=response;
         console.log("actionresponse Sucess>>>>",data);
         dispatch({
-            type:"LOGIN_SUCESS",
-            loginAction:data
+            type:"SEARCH_SUCESS",
+            searchAction:data
         });
     })
     .catch(error => {
         var data=error;
        console.log("actionresponse Failes>>>>>",data);
        dispatch({
-            type:"LOGIN_Failed",
-            loginAction:data
+            type:"SEARCH_Failed",
+            searchAction:data
        });
     })
   };

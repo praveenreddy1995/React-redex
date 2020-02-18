@@ -14,7 +14,6 @@ class LoginComponent extends React.Component {
     this.email = this.email.bind(this);
     this.password = this.password.bind(this);
     this.login = this.login.bind(this);
-    this.navigate = this.navigate.bind(this);
   }
   componentDidMount() {
     this.props.LoginAction.login();
@@ -22,7 +21,7 @@ class LoginComponent extends React.Component {
   componentWillReceiveProps(props) {
     if (props.loginCredentials) {
       let login = props.loginCredentials.data;
-      console.log(login);
+      console.log("logindata>>",JSON.stringify(login.name));
       if (props.loginCredentials.status === 200) {
         this.setState({ data: login });
       }
@@ -39,49 +38,29 @@ class LoginComponent extends React.Component {
     this.setState({ pass: e.target.value });
   }
   login(event) {
-    var checkfalg = 0;
     var username = this.state.username;
     var password = this.state.pass;
+    const data= this.state.data;
    
-    if(username==="" && password===""){
-      alert("please fill the detailes");
+    if(username===data.name && password===data.birth_year){
+      browserHistory.push("/home");
+     
     }else{
-      this.state.data.map(validdata);
-      function validdata(elem) {
-        if (username === elem.email && password === elem.password) {
-          checkfalg = 1;
-        }
-      }
+      alert(" Please fill the detailes");
     }
   
-    if (checkfalg === 1) {
-      alert("Login sucessful");
-      browserHistory.push("/home");
-    } else {
-      alert("Invalid login detailes");
-    }
-  }
-  navigate() {
-    browserHistory.push("/register");
-    window.location.reload();
+    // if (checkfalg === 1) {
+    //   alert("Login sucessful");
+    //   browserHistory.push("/home");
+    // } else {
+    //   alert("Invalid login detailes");
+    // }
   }
   render() {
     return (
       <div className="container register">
         <div className="row">
-          <div className="col-md-3 register-left">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <h3>Welcome</h3>
-            <p>You are A new Employee Please Register Here!</p>
-            <input
-              type="submit"
-              name=""
-              value="Register"
-              onClick={this.navigate}
-            />
-            <br />
-          </div>
-          <div className="col-md-9 register-right">
+          <div className="col-md-9">
             <div className="tab-content" id="myTabContent">
               <div
                 className="tab-pane fade show active"
