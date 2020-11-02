@@ -1,8 +1,7 @@
 import React from "react";
-import { bindActionCreators } from "redux";
 import { browserHistory } from "react-router";
-import { connect } from "react-redux";
-import Action from "../Actions";
+import container from "../utils/container";
+import {loginAction} from "../Actions/index";
 class LoginComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -16,22 +15,7 @@ class LoginComponent extends React.Component {
     this.login = this.login.bind(this);
     this.navigate = this.navigate.bind(this);
   }
-  componentDidMount() {
-    this.props.LoginAction.login();
-  }
-  componentWillReceiveProps(props) {
-    if (props.loginCredentials) {
-      let login = props.loginCredentials.data;
-      console.log(login);
-      if (props.loginCredentials.status === 200) {
-        this.setState({ data: login });
-      }
-    }
-    if (props.loginCredentialsFailed) {
-      console.log(JSON.stringify(props.loginCredentialsFailed));
-      alert(props.loginCredentialsFailed.name);
-    }
-  }
+
   email(e) {
     this.setState({ username: e.target.value });
   }
@@ -39,6 +23,7 @@ class LoginComponent extends React.Component {
     this.setState({ pass: e.target.value });
   }
   login(event) {
+    loginAction();
     var checkfalg = 0;
     var username = this.state.username;
     var password = this.state.pass;
@@ -131,20 +116,4 @@ class LoginComponent extends React.Component {
   }
 }
 
-function mapStateToProps(state, props) {
-  return {
-    loginCredentials: state.loginReducers.login_sucess,
-    loginCredentialsFailed: state.loginReducers.login_failed
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    LoginAction: bindActionCreators(Action, dispatch)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LoginComponent);
+export default container(LoginComponent, state => state);

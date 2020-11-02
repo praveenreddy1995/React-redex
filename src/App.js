@@ -6,14 +6,15 @@ import HomeComponent from './Components/home';
 import AboutusComponent from './Components/aboutus';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Provider } from "react-redux";
-import configureStore from "./Store/config";
-import logo from "./Images/Girmiti_Logo.png";
+import {createStore} from "./Store";
+import logo from "./Images/logo.jpg";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import initialState from "./intialState"
 
-const store = configureStore();
+const store = createStore(initialState);
 const useStyles = makeStyles({
   root: {
     flexGrow: 1
@@ -31,7 +32,7 @@ function App() {
               <AppBar position="static" color="default">
                 <Toolbar>
                   <Typography variant="h6" color="inherit">
-                    <img src={logo} alt="no logo"/>
+                    <img className="logo" src={logo} alt="no logo"/>
                   </Typography>
                   <div className="navbar_container">
                   <nav id="navbar-example2" className="navbar navbar-light">

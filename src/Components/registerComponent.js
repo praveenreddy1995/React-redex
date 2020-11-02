@@ -1,9 +1,7 @@
 import React from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import Action from "../Actions";
 import { browserHistory } from 'react-router';
 import "../Css/registerpage.css";
+import container from "../utils/container";
 class RegisterComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -167,34 +165,6 @@ class RegisterComponent extends React.Component {
                           required
                         />
                       </div>
-                      {/* <div className="form-group">
-                        <select
-                          className="form-control"
-                          onChange={this.question}
-                        >
-                          <option defaultValue="" className="hidden" disabled>
-                            Please select your Sequrity Question
-                          </option>
-                          <option defaultValue="What is your Birthdate?">
-                            What is your Birthdate?
-                          </option>
-                          <option defaultValue="What is Your old Phone Number">
-                            What is Your old Phone Number
-                          </option>
-                          <option defaultValue="What is your Pet Name?">
-                            What is your Pet Name?
-                          </option>
-                        </select>
-                      </div> */}
-                      {/* <div className="form-group">
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Enter Your Answer *"
-                          defaultValue={this.state.fields["answer"]}
-                          onChange={this.answer}
-                        />
-                      </div> */}
                       <input
                         type="submit"
                         className="btnRegister"
@@ -212,38 +182,4 @@ class RegisterComponent extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state, props) {
-  return {
-    registerDetailes: state.registerReducers.register_sucess
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    RegisterAction: bindActionCreators(Action, dispatch)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RegisterComponent);
-
-// function mapStateToProps(state, props) {
-//   return {
-//     loginCredentials: state.loginReducers.login_sucess
-//   };
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     LoginAction: bindActionCreators(Action, dispatch)
-//   };
-// }
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(LoginComponent);
-
-//export default LoginComponent;
+export default container(RegisterComponent, state => state);

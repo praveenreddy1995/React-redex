@@ -29,6 +29,9 @@
 .navbar_container{
   width:100%;
 }
+.logo{
+  width: 25%;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

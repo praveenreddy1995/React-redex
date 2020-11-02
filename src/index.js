@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
  import App from './App'; 
 import * as serviceWorker from './serviceWorker';
-import configureStore from './Store/config';
+import {createStore} from './Store/index';
+import initialState from "./intialState"
 
-const store = configureStore();
+const store = createStore(initialState);
 
 ReactDOM.render( <App store={store}/>, document.getElementById('root'));
 

@@ -1,19 +1,15 @@
 import React from "react";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import Action from "../Actions";
+import container from "../utils/container";
 class AboutComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.submit=this.submit.bind(this);
   }
-  componentDidMount() {
-    this.props.LoginAction.login();
-  }
-  componentWillReceiveProps(props) {
-    console.log("after recving props>>>>>>", JSON.stringify(props.loginCredentials));
-  }
+  // componentDidMount() {
+  //   this.props.LoginAction.login();
+  // }
+
   submit(values) {
     alert("submitted");
     console.log(values);
@@ -27,18 +23,6 @@ class AboutComponent extends React.Component {
   }
 }
 
-
-function mapStateToProps(state, props) {
-    return {
-        loginCredentials: state.loginReducers.login_sucess
-    };
-  }
   
-  function mapDispatchToProps(dispatch) {
-    return {
-        LoginAction: bindActionCreators(Action, dispatch)
-    }
-  }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(AboutComponent);
+  export default container(AboutComponent, state => state);
 
